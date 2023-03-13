@@ -59,6 +59,12 @@ public class Ui {
         }
     }
 
+    /**
+     * Display message verifying successful removal
+     * of flashcard from the list
+     *
+     * @param index is the index of the flashcard to be removed
+     */
     public void printSuccessfulDelete(int index) {
         System.out.println("Got it. Deleted the flashcard at index " + index);
     }

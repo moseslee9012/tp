@@ -3,6 +3,7 @@ package com.clanki.commands;
 import com.clanki.objects.FlashcardList;
 import com.clanki.ui.Ui;
 
+
 public class DeleteCommand extends Command {
 
     int index;

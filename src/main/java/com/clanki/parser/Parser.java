@@ -96,6 +96,15 @@ public class Parser {
         return new AddCommand(questionText, answerText);
     }
 
+    /**
+     * checks for an index following a "del" command,
+     * throws an EmptyIndexException if there is no
+     * index specified
+     *
+     * @param userInput The input from the user
+     * @return A DeleteCommand to remove the flashcard at the specified index
+     * @throws EmptyIndexException If there is no index found
+     */
     public Command tryDeleteCommand(String userInput)
             throws EmptyIndexException {
         FlashcardList tempFlashcard = new FlashcardList();
