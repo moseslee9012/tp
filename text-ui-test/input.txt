@@ -6,4 +6,5 @@ y
 a
 n
 foo 1
+del 0
 bye

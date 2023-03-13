@@ -8,6 +8,7 @@ import com.clanki.commands.ReviewCommand;
 import com.clanki.commands.UnknownCommand;
 import com.clanki.exceptions.EmptyFlashcardAnswerException;
 import com.clanki.exceptions.EmptyFlashcardQuestionException;
+import com.clanki.exceptions.EmptyIndexException;
 import com.clanki.exceptions.InvalidAddFlashcardInputException;
 
 import org.junit.jupiter.api.Test;
@@ -72,4 +73,12 @@ class ParserTest {
         Command parsedCommand = parser.parseCommand("unknown");
         assertTrue(parsedCommand instanceof UnknownCommand);
     }
+
+    @Test
+    public void parserDeleteCommand_MissingIndex_EmptyIndexException() {
+        Parser parser = new Parser();
+        assertThrows(EmptyIndexException.class,
+                () -> parser.tryDeleteCommand("del"));
+    }
+
 }

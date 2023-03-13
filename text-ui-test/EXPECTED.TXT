@@ -20,4 +20,5 @@ Have you got this correct?
 No worries, we will try it next time.
 Congrats! You have reviewed all the flashcards due today!
 The input is in an incorrect format.
+Got it. Deleted the flashcard at index 0
 Bye. Don't forget to come back later to study!

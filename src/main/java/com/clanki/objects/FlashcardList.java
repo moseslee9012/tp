@@ -17,4 +17,9 @@ public class FlashcardList {
     public ArrayList<Flashcard> getFlashCards() {
         return flashcards;
     }
+
+    public void deleteFlashcard(int index) {
+        flashcards.remove(index);
+    }
+
 }

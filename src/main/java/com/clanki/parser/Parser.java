@@ -4,11 +4,14 @@ package com.clanki.parser;
 import com.clanki.commands.AddCommand;
 import com.clanki.commands.ByeCommand;
 import com.clanki.commands.Command;
+import com.clanki.commands.DeleteCommand;
 import com.clanki.commands.ReviewCommand;
 import com.clanki.commands.UnknownCommand;
 import com.clanki.exceptions.EmptyFlashcardAnswerException;
 import com.clanki.exceptions.EmptyFlashcardQuestionException;
+import com.clanki.exceptions.EmptyIndexException;
 import com.clanki.exceptions.InvalidAddFlashcardInputException;
+import com.clanki.objects.FlashcardList;
 
 public class Parser {
     public static final String QUESTION_START_INDICATOR = "/q";
@@ -30,6 +33,13 @@ public class Parser {
             break;
         case "review":
             return new ReviewCommand();
+        case "del":
+            int index = Integer.parseInt(userInput.split(" ")[1]);
+            try {
+                return tryDeleteCommand(userInput);
+            } catch (EmptyIndexException e) {
+                System.out.println("You are missing the index, please specify which flashcard to remove.");
+            }
         case "bye":
             return new ByeCommand();
         default:
@@ -44,7 +54,11 @@ public class Parser {
      *
      * @param userInput The input collected by Ui from the user.
      * @return An AddCommand with the question and answer text extracted from user
-     *     input.
+     * <<<<<<< Updated upstream
+     * input.
+     * =======
+     * input.
+     * >>>>>>> Stashed changes
      * @throws InvalidAddFlashcardInputException If the start indicators cannot be
      *                                           found.
      * @throws EmptyFlashcardQuestionException   If the string is empty after
@@ -80,5 +94,18 @@ public class Parser {
             throw new EmptyFlashcardAnswerException();
         }
         return new AddCommand(questionText, answerText);
+    }
+
+    public Command tryDeleteCommand(String userInput)
+            throws EmptyIndexException {
+        FlashcardList tempFlashcard = new FlashcardList();
+        String deleteCommand = userInput.split(" ")[0];
+        String checkIndex = userInput.split(" ")[1];
+        int index = Integer.parseInt(checkIndex);
+
+        if (checkIndex == "") {
+            throw new EmptyIndexException();
+        }
+        return new DeleteCommand(index);
     }
 }

@@ -58,4 +58,9 @@ public class Ui {
             System.out.println(m);
         }
     }
+
+    public void printSuccessfulDelete(int index) {
+        System.out.println("Got it. Deleted the flashcard at index " + index);
+    }
 }
+
